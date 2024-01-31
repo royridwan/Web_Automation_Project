@@ -27,10 +27,22 @@ jobs:
       - name: Execute API Test
         run: ./gradlew -Ptags="@api"
 
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          PERSONAL_TOKEN: ${{ secrets.TOKEN_DEPLOY_FINAL_PROJECT }}
+          PUBLISH_DIR: reports
+
   run-web-automation:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Wait
+        uses: NathanFirmo/wait-for-other-job@v1.1.1
+        with:
+          token: ${{ secrets.TOKEN_DEPLOY_FINAL_PROJECT }}
+          job: 'run-api-automation'
       - uses: actions/checkout@v3
 
       - name: Set up JDK 21

@@ -41,7 +41,7 @@ public class Utility {
 
     public static void quitDriver() throws InterruptedException {
         Thread.sleep(2000);
-        driver.close();
+        
         driver.quit();
     }
 

@@ -31,7 +31,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          PERSONAL_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           PUBLISH_DIR: reports
 
   run-web-automation:
@@ -41,7 +40,6 @@ jobs:
       - name: Wait
         uses: NathanFirmo/wait-for-other-job@v1.1.1
         with:
-          token: ${{ secrets.TOKEN_GITHUB }}
           job: 'run-api-automation'
 
       - uses: actions/checkout@v3
@@ -65,5 +63,4 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          PERSONAL_TOKEN: ${{ secrets.TOKEN_DEPLOY_FINAL_PROJECT }}
           PUBLISH_DIR: reports

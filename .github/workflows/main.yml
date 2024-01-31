@@ -32,14 +32,14 @@ jobs:
         if: always()
         with:
           name: Cucumber Report API
-          path: reports
+          path: api_reports
 
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           PERSONAL_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          PUBLISH_DIR: reports
+          PUBLISH_DIR: api_reports
 
   run-web-automation:
     runs-on: ubuntu-latest
@@ -72,11 +72,11 @@ jobs:
         if: always()
         with:
           name: Cucumber Report WEB
-          path: reports
+          path: web_reports
           
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           PERSONAL_TOKEN: ${{ secrets.TOKEN_DEPLOY_FINAL_PROJECT }}
-          PUBLISH_DIR: reports
+          PUBLISH_DIR: web_reports

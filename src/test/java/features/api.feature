@@ -1,3 +1,4 @@
+@api
 Feature: Test Automation Rest API
 
   @api
